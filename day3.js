@@ -12,7 +12,7 @@ function part2(map, slopes) {
 	try {
 		let data = await getDataForDay(3);
 		let times = 7*data.length/data[0].length;
-		let map = data.map((row, _, arr) => row.repeat(times).split(''));
+		let map = data.map((row) => row.repeat(times).split(''));
 		
 		console.log('part1', part1(map, { r: 3, d: 1}));
 		console.log('part2', part2(map, [{r:1, d:1},{r:3, d:1},{r:5, d:1},{r:7, d:1},{r:1, d:2}]));
