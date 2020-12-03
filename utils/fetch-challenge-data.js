@@ -13,7 +13,7 @@ async function getDataForDay(n) {
 			Cookie: `session=${process.env.SESSION}`
 		}});
 		await fs.writeFile(path.join(__dirname, `../data/day_${n}.txt`), data)
-		return data;
+		return data.split('\n');
 	}
 }
 
