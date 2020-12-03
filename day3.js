@@ -1,12 +1,8 @@
 const getDataForDay = require('./utils/fetch-challenge-data');
 
-function part1(map, path) {
-	return map.reduce((sum, el, i) => el[i * path.r / path.d] === '#' && i % path.d === 0 ? sum + 1 : sum, 0);
-}
+let part1 = (map, slope) => map.reduce((sum, el, i) => el[i * slope.r / slope.d] === '#' && i % slope.d === 0 ? sum + 1 : sum, 0);
 
-function part2(map, slopes) {
-	return slopes.reduce((sum, slope) => sum * part1(map, slope), 1);
-}
+let part2 = (map, slopes) => slopes.reduce((sum, slope) => sum * part1(map, slope), 1);
 
 getDataForDay(3).then(data => {
 	let times = 7 * data.length / data[0].length;
