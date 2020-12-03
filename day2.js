@@ -20,7 +20,7 @@ function part2(passwords) {
 (async () => {
 	try {
 		let data = await getDataForDay(2);
-		let passwords = data.split('\n').filter(el => el).map(el => {
+		let passwords = data.filter(el => el).map(el => {
 			let [rules, password] = el.split(': ')
 			let [quant, char] = rules.split(' ')
 			let [min, max] = quant.split('-')

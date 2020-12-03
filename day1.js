@@ -25,7 +25,7 @@ function part2(expenses) {
 (async () => {
 	try { 
 		const data = await getDataForDay(1);
-		const expenses = data.split('\n').map(Number)
+		const expenses = data.map(Number)
 		console.log('part1', part1(expenses))
 		console.log('part2', part2(expenses))
 	} catch(e) {

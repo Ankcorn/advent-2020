@@ -6,7 +6,7 @@ const path = require('path');
 async function getDataForDay(n) {
 	try {
 		const file = await fs.readFile(path.join(__dirname, `../data/day_${n}.txt`));
-		return file.toString()
+		return file.toString().split('\n')
 	} catch(e) {
 		console.log('file not found in cache fetching new data')
 		const { data } = await get(`https://adventofcode.com/2020/day/${n}/input`, { headers: {
