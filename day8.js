@@ -14,22 +14,18 @@ let part1 = (instructions, a, n) => {
 	instructions[next].used = true
 
 	if(instructions[next].instruction.includes('nop')) {
-
-		next++
-		return part1(instructions, acc, next)
+		return part1(instructions, acc, next + 1)
 	}
 
 	let [i, quant] = instructions[next].instruction.split(' ');
 	let [opp, ...nn] = quant.split('');
 	let num = Number(nn.join(''));
+
 	if(i === 'acc') {
-		next++
-		acc = opp === '-' ? acc - num: acc + num;
-		return part1(instructions, acc, next);
+		return part1(instructions, eval(acc + opp + num), next + 1);
 	}
 	if(i === 'jmp') {
-		next = opp === '-' ? next - num: next + num;
-		return part1(instructions, acc, next);
+		return part1(instructions, acc, eval(next + opp + num));
 	}
 }
 
@@ -47,7 +43,6 @@ let part2 = (instructions) => {
 		}
 	}
 }
-
 
 getDataForDay(8).then(data => {
 	let input = data.trim().split('\n').map(el => ({ instruction: el}));
