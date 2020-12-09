@@ -4,16 +4,17 @@ let part1 = (instructions, a, n) => {
 	let next = n || 0
 	let acc = a || 0
 	if(next === instructions.length) {
-		console.log('ended')
 		return { acc, status: 'ended' };
 	}
+
 	if(instructions[next].used) {
 		return { acc, status: 'crashed' };
 	}
+
 	instructions[next].used = true
 
 	if(instructions[next].instruction.includes('nop')) {
-	
+
 		next++
 		return part1(instructions, acc, next)
 	}
@@ -42,7 +43,7 @@ let part2 = (instructions) => {
 		}
 		let res = part1(newIns)
 		if(res.status === 'ended') {
-			return res.acc
+			return res
 		}
 	}
 }
